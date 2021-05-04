@@ -6,7 +6,6 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Question, Choice
-from django.template import loader
 from django.shortcuts import (render, get_object_or_404, get_list_or_404)
 
 
@@ -27,6 +26,7 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         return self.model.objects.filter(pub_date__lte=timezone.now())
+
 
 class ResultsView(generic.DetailView):
     model = Question
