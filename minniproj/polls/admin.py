@@ -13,9 +13,12 @@ class QuestionAdmin(admin.ModelAdmin):
         ( 'Date information', {'fields': ['pub_date']} )
     ]
     inlines = [ ChoiceInline ]
+
     # list:
     list_display = ('question_text', 'pub_date', 'was_published_recently')
-
+    list_filter = ['pub_date']
+    search_fields = ['question_text']
+    list_per_page = 20
 
 # Register your models here.
 admin.site.register(Question, QuestionAdmin)
